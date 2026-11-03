@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="BANKING-MANAGEMENT Banner" width="100%">
+</p>
+
 # Banking Management System
 A Python-based Banking Management System that allows users to create accounts, deposit and withdraw money, check balances, and view transaction history.
 
