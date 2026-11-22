@@ -19,29 +19,29 @@ The Banking Management System is a command-line financial management program dev
 ## ◆ System Architecture
 ```mermaid
 graph TD
-    subgraph CLI ["Terminal User Interface"]
-        Menu["Interactive Menu Loop"] --> Selection{"Operation Choice"}
-        Selection -- 1 --> OpCreate["Create Account"]
-        Selection -- 2 --> OpDeposit["Deposit Funds"]
-        Selection -- 3 --> OpWithdraw["Withdraw Funds"]
-        Selection -- 4 --> OpBalance["Check Balance"]
-        Selection -- 5 --> OpHistory["Transaction History"]
+    subgraph CLI ["&nbsp; Terminal User Interface &nbsp;"]
+        Menu["&nbsp; Interactive &nbsp;<br/>&nbsp; Menu Loop &nbsp;"] --> Selection{"&nbsp; Operation? &nbsp;"}
+        Selection -- 1 --> OpCreate["&nbsp; Create Account &nbsp;"]
+        Selection -- 2 --> OpDeposit["&nbsp; Deposit Funds &nbsp;"]
+        Selection -- 3 --> OpWithdraw["&nbsp; Withdraw Funds &nbsp;"]
+        Selection -- 4 --> OpBalance["&nbsp; Check Balance &nbsp;"]
+        Selection -- 5 --> OpHistory["&nbsp; Transaction &nbsp;<br/>&nbsp; History &nbsp;"]
     end
 
-    subgraph CoreEngine ["Banking Business Logic"]
-        OpCreate --> ValAcct["Unique Account &<br/>Initial Balance Check"]
-        OpDeposit --> ValDep["Positive Amount<br/>Validator"]
-        OpWithdraw --> ValOverdraft{"Balance >=<br/>Withdrawal?"}
-        ValOverdraft -- No --> ErrFunds["Insufficient Funds<br/>Alert"]
-        ValOverdraft -- Yes --> ExecTrans["Apply Balance Delta"]
-        OpBalance --> QueryAcct["Account Lookup"]
-        OpHistory --> QueryTrans["Filter Transaction<br/>Ledger"]
+    subgraph CoreEngine ["&nbsp; Banking Business Logic &nbsp;"]
+        OpCreate --> ValAcct["&nbsp; Account &amp; Balance &nbsp;<br/>&nbsp; Validator &nbsp;"]
+        OpDeposit --> ValDep["&nbsp; Positive Amount &nbsp;<br/>&nbsp; Validator &nbsp;"]
+        OpWithdraw --> ValOverdraft{"&nbsp; Balance &gt;= &nbsp;<br/>&nbsp; Withdrawal? &nbsp;"}
+        ValOverdraft -- No --> ErrFunds["&nbsp; Insufficient &nbsp;<br/>&nbsp; Funds Alert &nbsp;"]
+        ValOverdraft -- Yes --> ExecTrans["&nbsp; Apply Balance &nbsp;<br/>&nbsp; Delta &nbsp;"]
+        OpBalance --> QueryAcct["&nbsp; Account &nbsp;<br/>&nbsp; Lookup &nbsp;"]
+        OpHistory --> QueryTrans["&nbsp; Filter Transaction &nbsp;<br/>&nbsp; Ledger &nbsp;"]
     end
 
-    subgraph LedgerStorage ["Persistent CSV Storage"]
-        ValAcct --> AcctCSV[("accounts.csv<br/>AccountNo, Name, Balance")]
+    subgraph LedgerStorage ["&nbsp; Persistent CSV Storage &nbsp;"]
+        ValAcct --> AcctCSV[("&nbsp; accounts.csv &nbsp;<br/>&nbsp; AcctNo, Name, Bal &nbsp;")]
         ExecTrans --> AcctCSV
-        ExecTrans --> TransCSV[("transactions.csv<br/>AccountNo, Type, Amount")]
+        ExecTrans --> TransCSV[("&nbsp; transactions.csv &nbsp;<br/>&nbsp; AcctNo, Type, Amt &nbsp;")]
         QueryAcct --> AcctCSV
         QueryTrans --> TransCSV
     end
